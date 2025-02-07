@@ -59,7 +59,7 @@ class UsersDao {
     }
   }
 
-  Future<dynamic> getUserByCpf({required String cpf}) async {
+  Future<User?> getUserByCpf({required String cpf}) async {
     try {
       final Database db = await DB.instance.database;
 
@@ -69,10 +69,27 @@ class UsersDao {
         whereArgs: [cpf],
       );
 
-      return User.fromMap(result.first);
+      return result.isNotEmpty ? User.fromMap(result.first) : null;
     } catch (e) {
       print('Erro ao consultar o usuário: $e');
-      return false;
+      return null;
+    }
+  }
+
+  Future<User?> getUserById({required String id}) async {
+    try {
+      final Database db = await DB.instance.database;
+
+      List<Map<String, dynamic>> result = await db.query(
+        _tableName,
+        where: '$_id = ?',
+        whereArgs: [id],
+      );
+
+      return result.isNotEmpty ? User.fromMap(result.first) : null;
+    } catch (e) {
+      print('Erro ao consultar o usuário: $e');
+      return null;
     }
   }
 
@@ -94,5 +111,30 @@ class UsersDao {
       print('Erro ao consultar o usuário: $e');
       return false;
     }
+  }
+
+  Future<List<User>?> getAllUsers() async {
+    try {
+      final Database db = await DB.instance.database;
+      List<User> listReturn = List.empty(growable: true);
+
+      List<Map<String, dynamic>> result = await db.query(
+        _tableName,
+        where: '$_status = ?',
+        whereArgs: [1],
+      );
+
+      if (result.isNotEmpty) {
+        for (var userMap in result) {
+          listReturn.add(User.fromMap(userMap));
+        }
+
+        return listReturn;
+      }
+    } catch (e) {
+      print('Erro ao consultar usuários: $e');
+      return null;
+    }
+    return null;
   }
 }

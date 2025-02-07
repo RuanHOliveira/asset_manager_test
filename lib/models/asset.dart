@@ -1,10 +1,10 @@
 class Asset {
-  final int id;
-  final String name;
-  final String code;
-  final String userId;
-  final String dtInventory;
-  final String status;
+  final int? id;
+  final String? name;
+  final String? code;
+  final int? userId;
+  final String? dtInventory;
+  final int? status;
 
   const Asset(
     this.id,

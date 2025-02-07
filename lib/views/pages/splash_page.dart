@@ -1,4 +1,4 @@
-import 'package:asset_manager_test/src/pages/sign_in_page.dart';
+import 'package:asset_manager_test/views/pages/sign_in_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

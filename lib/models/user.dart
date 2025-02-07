@@ -1,10 +1,10 @@
 class User {
-  final int id;
-  final String cpf;
-  final String name;
-  final String password;
-  final String type;
-  final String status;
+  final int? id;
+  final String? cpf;
+  final String? name;
+  final String? password;
+  final int? type;
+  final int? status;
 
   const User(
     this.id,

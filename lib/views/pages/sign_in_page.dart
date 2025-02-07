@@ -1,10 +1,11 @@
 import 'package:asset_manager_test/controllers/users_controller.dart';
+import 'package:asset_manager_test/models/user.dart';
+import 'package:asset_manager_test/src/common/navigation/main_navigation.dart';
 import 'package:asset_manager_test/src/common/widgets/buttons/multi_text_button.dart';
 import 'package:asset_manager_test/src/common/widgets/buttons/primary_button.dart';
 import 'package:asset_manager_test/src/common/widgets/fields/custom_text_form_field.dart';
 import 'package:asset_manager_test/src/common/widgets/fields/password_form_field.dart';
-import 'package:asset_manager_test/src/pages/home_page.dart';
-import 'package:asset_manager_test/src/pages/sign_up_page.dart';
+import 'package:asset_manager_test/views/pages/sign_up_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
@@ -25,6 +26,18 @@ class _SignInPageState extends State<SignInPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _cpfController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _cpfController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   Future<bool> _tryLogin() async {
     if (_cpfController.text.length < 11) {
@@ -54,9 +67,10 @@ class _SignInPageState extends State<SignInPage> {
       return false;
     }
 
+    User? user = await usersController.getUserByCpf(cpf: _cpfController.text);
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (_) => const HomePage(),
+        builder: (_) => MainNavigation(user: user),
       ),
     );
     return true;
@@ -112,7 +126,6 @@ class _SignInPageState extends State<SignInPage> {
                         maxLength: 11,
                       ),
                       PasswordFormField(
-                        // key: Keys.signInPasswordField,
                         controller: _passwordController,
                         hintText: "Senha",
                         validator: _fieldValidator,

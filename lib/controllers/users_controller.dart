@@ -1,4 +1,5 @@
 import 'package:asset_manager_test/database/dao/users_dao.dart';
+import 'package:asset_manager_test/models/user.dart';
 
 class UsersController {
   final UsersDao usersDao = UsersDao();
@@ -24,5 +25,17 @@ class UsersController {
     required String password,
   }) async {
     return await usersDao.tryLogin(cpf: cpf, password: password);
+  }
+
+  Future<User?> getUserByCpf({required String cpf}) async {
+    return await usersDao.getUserByCpf(cpf: cpf);
+  }
+
+  Future<User?> getUserById({required String id}) async {
+    return await usersDao.getUserById(id: id);
+  }
+
+  Future<List<User>?> getAllUsers() async {
+    return await usersDao.getAllUsers();
   }
 }

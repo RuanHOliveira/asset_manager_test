@@ -3,7 +3,7 @@ import 'package:asset_manager_test/src/common/widgets/buttons/multi_text_button.
 import 'package:asset_manager_test/src/common/widgets/buttons/primary_button.dart';
 import 'package:asset_manager_test/src/common/widgets/fields/custom_text_form_field.dart';
 import 'package:asset_manager_test/src/common/widgets/fields/password_form_field.dart';
-import 'package:asset_manager_test/src/pages/sign_in_page.dart';
+import 'package:asset_manager_test/views/pages/sign_in_page.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

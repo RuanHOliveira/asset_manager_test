@@ -1,4 +1,4 @@
-import 'package:asset_manager_test/src/pages/splash_page.dart';
+import 'package:asset_manager_test/views/pages/splash_page.dart';
 import 'package:flutter/material.dart';
 
 class AssetManagerApp extends StatefulWidget {
