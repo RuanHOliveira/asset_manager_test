@@ -1,5 +1,7 @@
 # 📱 Asset Manager
 
+## Projeto desenvolvido para desafiio técnico em processo seletivo
+
 ## 📌 Sobre o Projeto
 
 O Asset Manager é uma aplicação desenvolvida para gerenciar equipamentos através da leitura de QR Codes. Ele permite cadastrar equipamentos, vinculá-los a usuários e realizar inventários de forma rápida e eficiente.
