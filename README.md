@@ -1,6 +1,6 @@
 # 📱 Asset Manager
 
-## Projeto desenvolvido para desafiio técnico em processo seletivo
+## Projeto desenvolvido para desafio técnico em processo seletivo.
 
 ## 📌 Sobre o Projeto
 
